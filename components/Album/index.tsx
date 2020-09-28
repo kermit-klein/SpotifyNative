@@ -7,11 +7,11 @@ export type AlbumProps = {
   album: Album;
 };
 
-const Album = (props: AlbumProps) => (
+const AlbumComponent = (props: AlbumProps) => (
   <View style={styles.container}>
     <Image source={{ uri: props.album.imageUri }} style={styles.image} />
     <Text style={styles.text}>{props.album.artistHeadline}</Text>
   </View>
 );
 
-export default Album;
+export default AlbumComponent;
