@@ -15,6 +15,8 @@ const AlbumCategory = (props: AlbumCategoryProps) => (
     <FlatList
       data={props.albums}
       renderItem={({ item }) => <AlbumComponent album={item} />}
+      keyExtractor={(item) => item.id}
+      horizontal
     ></FlatList>
   </View>
 );
