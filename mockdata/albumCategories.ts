@@ -1,4 +1,4 @@
-const albumCategories = [
+export default [
   {
     id: "1",
     title: "Jazz Vibes",

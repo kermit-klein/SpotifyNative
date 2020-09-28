@@ -1,41 +1,19 @@
 import * as React from "react";
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, FlatList, View } from "react-native";
 import AlbumCategory from "../components/AlbumCategory";
 
-const albumCategory = {
-  id: "1",
-  title: "Happy Vibes",
-  albums: [
-    {
-      id: "1",
-      imageUri: "https://picsum.photos/200",
-      artistHeadline: "Stan Getz, Cannonball Adderley",
-    },
-    {
-      id: "2",
-      imageUri: "https://picsum.photos/200",
-      artistHeadline: "Charlie Parker, Gerry Mulligan",
-    },
-    {
-      id: "3",
-      imageUri: "https://picsum.photos/200",
-      artistHeadline: "John Coltrane, Scott Hamilton",
-    },
-    {
-      id: "4",
-      imageUri: "https://picsum.photos/200",
-      artistHeadline: "Miles Davis, Oliver Nelson",
-    },
-  ],
-};
+import albumCategories from "../mockdata/albumCategories";
 
 export default function HomeScreen() {
   return (
     <View style={styles.container}>
-      <AlbumCategory
-        title={albumCategory.title}
-        albums={albumCategory.albums}
-      />
+      <FlatList
+        data={albumCategories}
+        renderItem={({ item }) => (
+          <AlbumCategory title={item.title} albums={item.albums} />
+        )}
+        keyExtractor={(item) => item.id}
+      ></FlatList>
     </View>
   );
 }
