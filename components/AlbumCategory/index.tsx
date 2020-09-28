@@ -10,12 +10,13 @@ export type AlbumCategoryProps = {
 };
 
 const AlbumCategory = (props: AlbumCategoryProps) => (
-  <View>
+  <View style={styles.container}>
     <Text style={styles.title}>{props.title}</Text>
     <FlatList
       data={props.albums}
       renderItem={({ item }) => <AlbumComponent album={item} />}
       keyExtractor={(item) => item.id}
+      showsHorizontalScrollIndicator={false}
       horizontal
     ></FlatList>
   </View>
