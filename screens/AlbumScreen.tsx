@@ -8,9 +8,7 @@ import AlbumHeader from "../components/AlbumHeader";
 const AlbumScreen = () => {
   const route = useRoute();
 
-  useEffect(() => {
-    console.warn(route);
-  }, []);
+  useEffect(() => {}, []);
 
   return (
     <View>

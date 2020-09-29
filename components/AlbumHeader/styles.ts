@@ -3,6 +3,7 @@ import { StyleSheet } from "react-native";
 const styles = StyleSheet.create({
   container: {
     alignItems: "center",
+    padding: 20,
   },
   image: {
     width: 200,
@@ -13,6 +14,8 @@ const styles = StyleSheet.create({
     color: "white",
     fontSize: 30,
     fontWeight: "bold",
+    width: "100%",
+    textAlign: "center",
   },
   creator: {
     color: "lightgray",
@@ -26,13 +29,19 @@ const styles = StyleSheet.create({
   },
   creatorContainer: {
     flexDirection: "row",
+    margin: 10,
   },
   button: {
     backgroundColor: "#1CD05D",
+    height: 50,
+    width: 175,
+    borderRadius: 50,
+    justifyContent: "center",
+    alignItems: "center",
   },
   buttonText: {
     color: "lightgray",
-    fontSize: 24,
+    fontSize: 18,
     fontWeight: "bold",
   },
 });
