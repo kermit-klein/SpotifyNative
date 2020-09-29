@@ -14,7 +14,6 @@ const AlbumScreen = () => {
 
   return (
     <View>
-      <Text style={{ color: "white" }}>Hello from Album Screen</Text>
       <FlatList
         data={albumDetails.songs}
         renderItem={({ item }) => <SongListItem song={item} />}
