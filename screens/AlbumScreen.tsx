@@ -3,6 +3,7 @@ import React, { useEffect } from "react";
 import { View, Text, FlatList } from "react-native";
 import albumDetails from "../mockdata/albumDetails";
 import SongListItem from "../components/SongListItem";
+import AlbumHeader from "../components/AlbumHeader";
 
 const AlbumScreen = () => {
   const route = useRoute();
@@ -18,6 +19,7 @@ const AlbumScreen = () => {
         data={albumDetails.songs}
         renderItem={({ item }) => <SongListItem song={item} />}
         keyExtractor={(item) => item.id}
+        ListHeaderComponent={() => <AlbumHeader album={albumDetails} />}
       />
     </View>
   );
