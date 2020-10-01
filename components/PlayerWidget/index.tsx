@@ -1,7 +1,7 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Text, Image, View } from "react-native";
 import { AntDesign, FontAwesome } from "@expo/vector-icons";
-import { Audio } from "expo-av";
+import { Sound } from "expo-av/build/Audio/Sound";
 
 import styles from "./styles";
 
@@ -15,16 +15,22 @@ const song = {
 };
 
 const PlayerWidget = () => {
+  const [sound, setSound] = useState<Sound | null>(null);
+
   const onPlaybackStatusUpdate = (status) => {
     console.log(status);
   };
 
   const playCurrentSong = async () => {
-    const { sound } = await Audio.Sound.createAsync(
+    if (sound) {
+      await sound.unloadAsync();
+    }
+    const { sound: newSound } = await Sound.createAsync(
       { uri: song.uri },
       { shouldPlay: true },
       onPlaybackStatusUpdate
     );
+    setSound(newSound);
   };
 
   useEffect(() => {
