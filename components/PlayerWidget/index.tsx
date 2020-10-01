@@ -20,7 +20,7 @@ const PlayerWidget = () => {
   const [isPlaying, setIsPlaying] = useState<boolean>(true);
 
   const onPlaybackStatusUpdate = (status) => {
-    console.log(status);
+    setIsPlaying(status.isPlaying);
   };
 
   const playCurrentSong = async () => {
@@ -61,7 +61,11 @@ const PlayerWidget = () => {
         <View style={styles.iconContainer}>
           <AntDesign name="hearto" size={30} color={"white"} />
           <TouchableOpacity onPress={onPlayPausePress}>
-            <FontAwesome name="play" size={30} color={"white"} />
+            <FontAwesome
+              name={isPlaying ? "pause" : "play"}
+              size={30}
+              color={"white"}
+            />
           </TouchableOpacity>
         </View>
       </View>
