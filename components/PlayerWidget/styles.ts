@@ -3,13 +3,12 @@ import { StyleSheet } from "react-native";
 const styles = StyleSheet.create({
   container: {
     position: "absolute",
-    flexDirection: "row",
+    flexDirection: "column",
     bottom: 49,
     width: "100%",
     backgroundColor: "#131313",
     borderWidth: 2,
     borderColor: "black",
-    alignItems: "center",
   },
   rightContainer: {
     flexDirection: "row",
@@ -41,6 +40,13 @@ const styles = StyleSheet.create({
     width: 75,
     height: 75,
     marginRight: 10,
+  },
+  progress: {
+    height: 5,
+    backgroundColor: "#bcbcbc",
+  },
+  row: {
+    flexDirection: "row",
   },
 });
 
