@@ -4,6 +4,7 @@ import { AntDesign, FontAwesome } from "@expo/vector-icons";
 import { Sound } from "expo-av/build/Audio/Sound";
 
 import styles from "./styles";
+import { TouchableOpacity } from "react-native-gesture-handler";
 
 const song = {
   id: "1",
@@ -16,6 +17,7 @@ const song = {
 
 const PlayerWidget = () => {
   const [sound, setSound] = useState<Sound | null>(null);
+  const [isPlaying, setIsPlaying] = useState<boolean>(true);
 
   const onPlaybackStatusUpdate = (status) => {
     console.log(status);
@@ -27,7 +29,7 @@ const PlayerWidget = () => {
     }
     const { sound: newSound } = await Sound.createAsync(
       { uri: song.uri },
-      { shouldPlay: true },
+      { shouldPlay: isPlaying },
       onPlaybackStatusUpdate
     );
     setSound(newSound);
@@ -36,6 +38,17 @@ const PlayerWidget = () => {
   useEffect(() => {
     playCurrentSong();
   }, []);
+
+  const onPlayPausePress = async () => {
+    if (!sound) {
+      return;
+    }
+    if (isPlaying) {
+      await sound.stopAsync();
+    } else {
+      await sound.playAsync();
+    }
+  };
 
   return (
     <View style={styles.container}>
@@ -47,7 +60,9 @@ const PlayerWidget = () => {
         </View>
         <View style={styles.iconContainer}>
           <AntDesign name="hearto" size={30} color={"white"} />
-          <FontAwesome name="play" size={30} color={"white"} />
+          <TouchableOpacity onPress={onPlayPausePress}>
+            <FontAwesome name="play" size={30} color={"white"} />
+          </TouchableOpacity>
         </View>
       </View>
     </View>
