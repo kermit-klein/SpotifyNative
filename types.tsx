@@ -22,7 +22,7 @@ export type Album = {
   by: string;
   numberOfLikes: number;
   imageUri: string;
-  artistHeadline: string;
+  artistsHeadline: string;
 };
 
 export type Song = {
