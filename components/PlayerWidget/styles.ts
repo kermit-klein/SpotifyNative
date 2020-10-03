@@ -16,8 +16,7 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   nameContainer: {
-    flexDirection: "row",
-    alignItems: "center",
+    alignItems: "flex-start",
   },
   iconContainer: {
     flexDirection: "row",
@@ -30,7 +29,7 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontWeight: "bold",
     fontFamily: "sans-serif",
-    margin: 10,
+    marginTop: 15,
   },
   artist: {
     color: "lightgrey",
