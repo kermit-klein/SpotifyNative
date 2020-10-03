@@ -1,7 +1,6 @@
 import { useRoute } from "@react-navigation/native";
 import React, { useEffect, useState } from "react";
 import { View, Text, FlatList } from "react-native";
-import albumDetails from "../mockdata/albumDetails";
 import SongListItem from "../components/SongListItem";
 import AlbumHeader from "../components/AlbumHeader";
 import { API, graphqlOperation } from "aws-amplify";

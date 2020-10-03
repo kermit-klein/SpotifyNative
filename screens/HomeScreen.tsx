@@ -5,8 +5,6 @@ import AlbumCategory from "../components/AlbumCategory";
 import { API, graphqlOperation } from "aws-amplify";
 import { listAlbumCategorys } from "../src/graphql/queries";
 
-import albumCategories from "../mockdata/albumCategories";
-
 export default function HomeScreen() {
   const [categories, setCategories] = useState([]);
 

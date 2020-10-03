@@ -30,10 +30,12 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     fontFamily: "sans-serif",
     marginTop: 15,
+    width: 230,
   },
   artist: {
     color: "lightgrey",
     fontSize: 18,
+    width: 230,
   },
   image: {
     width: 75,

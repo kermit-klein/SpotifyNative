@@ -4,19 +4,11 @@ import { AntDesign, FontAwesome } from "@expo/vector-icons";
 import { Sound } from "expo-av/build/Audio/Sound";
 import { AppContext } from "../../AppContext";
 import { API, graphqlOperation } from "aws-amplify";
+import TextTicker from "react-native-text-ticker";
 
 import styles from "./styles";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import { getSong } from "../../src/graphql/queries";
-
-const song = {
-  id: "1",
-  uri:
-    "https://file-examples-com.github.io/uploads/2017/11/file_example_MP3_2MG.mp3",
-  imageUri: "https://picsum.photos/200",
-  title: "High on You",
-  artist: "Helen",
-};
 
 const PlayerWidget = () => {
   const [song, setSong] = useState(null);
@@ -95,8 +87,28 @@ const PlayerWidget = () => {
         <Image source={{ uri: song.imageUri }} style={styles.image} />
         <View style={styles.rightContainer}>
           <View style={styles.nameContainer}>
-            <Text style={styles.title}>{song.title}</Text>
-            <Text style={styles.artist}>{song.artist}</Text>
+            <TextTicker
+              duration={15000}
+              loop
+              bounce
+              repeatSpacer={50}
+              marqueeDelay={1500}
+              style={styles.title}
+              isRTL={false}
+            >
+              {song.title}
+            </TextTicker>
+            <TextTicker
+              duration={15000}
+              loop
+              bounce
+              repeatSpacer={50}
+              marqueeDelay={1500}
+              style={styles.artist}
+              isRTL={false}
+            >
+              {song.artist}
+            </TextTicker>
           </View>
           <View style={styles.iconContainer}>
             <AntDesign name="hearto" size={30} color={"white"} />
