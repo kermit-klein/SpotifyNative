@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useContext } from "react";
-import { Text, Image, View } from "react-native";
+import { Image, View } from "react-native";
 import { AntDesign, FontAwesome } from "@expo/vector-icons";
 import { Sound } from "expo-av/build/Audio/Sound";
 import { AppContext } from "../../AppContext";
