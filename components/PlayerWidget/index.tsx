@@ -1,10 +1,13 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { Text, Image, View } from "react-native";
 import { AntDesign, FontAwesome } from "@expo/vector-icons";
 import { Sound } from "expo-av/build/Audio/Sound";
+import { AppContext } from "../../AppContext";
+import { API, graphqlOperation } from "aws-amplify";
 
 import styles from "./styles";
 import { TouchableOpacity } from "react-native-gesture-handler";
+import { getSong } from "../../src/graphql/queries";
 
 const song = {
   id: "1",
@@ -16,10 +19,27 @@ const song = {
 };
 
 const PlayerWidget = () => {
+  const [song, setSong] = useState(null);
   const [sound, setSound] = useState<Sound | null>(null);
   const [isPlaying, setIsPlaying] = useState<boolean>(true);
   const [duration, setDuration] = useState<number | null>(null);
   const [position, setPosition] = useState<number | null>(null);
+
+  const { songId } = useContext(AppContext);
+
+  useEffect(() => {
+    const fetchSong = async () => {
+      try {
+        const data = await API.graphql(
+          graphqlOperation(getSong, { id: songId })
+        );
+        setSong(data.data.getSong);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    fetchSong();
+  }, [songId]);
 
   const onPlaybackStatusUpdate = (status) => {
     setIsPlaying(status.isPlaying);
@@ -40,8 +60,10 @@ const PlayerWidget = () => {
   };
 
   useEffect(() => {
-    playCurrentSong();
-  }, []);
+    if (song) {
+      playCurrentSong();
+    }
+  }, [song]);
 
   const onPlayPausePress = async () => {
     if (!sound) {
@@ -61,6 +83,10 @@ const PlayerWidget = () => {
       return (position / duration) * 100;
     }
   };
+
+  if (!song) {
+    return null;
+  }
 
   return (
     <View style={styles.container}>
